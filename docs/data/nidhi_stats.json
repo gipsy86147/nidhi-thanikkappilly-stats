@@ -1,0 +1,176 @@
+{
+  "generated_at_utc": "2026-03-29T13:18:34.705729+00:00",
+  "athlete": {
+    "first_name": "Nidhi",
+    "last_name": "Thanikkappilly",
+    "display_name": "Nidhi Thanikkappilly"
+  },
+  "sources": {
+    "hipenta_urls": [
+      "https://www.hipenta.com/live/events/46b72a21-cef6-4404-a527-6618600bf67f/categories/e6889cfc-828c-4792-82e2-c6fb8980b624/result",
+      "https://www.hipenta.com/live/events/f14078fe-cd99-4f90-b2c2-994adeb4293e/categories/b2e43a82-0ae8-446c-a926-2f67312d4235/result"
+    ],
+    "pentathlonscore_url": "https://pentathlonscore.com/"
+  },
+  "summary": {
+    "hipenta_event_count": 2,
+    "pentathlonscore_event_count": 2,
+    "best_points": 1108,
+    "latest_event_date": "2026-03-21"
+  },
+  "hipenta_events": [
+    {
+      "source": "hipenta",
+      "source_url": "https://www.hipenta.com/live/events/46b72a21-cef6-4404-a527-6618600bf67f/categories/e6889cfc-828c-4792-82e2-c6fb8980b624/result",
+      "event_name": "2025 Western Winter Invitational",
+      "category": "U15 females",
+      "location": "Calgary",
+      "event_datetime_text": "Mar 2, 2025 5:30 PM",
+      "overall_points": 488,
+      "overall_rank": 2,
+      "disciplines": {
+        "Obstacle": {
+          "Time": "32:08",
+          "Penalty": "2",
+          "Points": "0",
+          "Rank": "3"
+        },
+        "Fencing": {
+          "V/D": "8/11",
+          "Ladder Victories": "0",
+          "Points": "210",
+          "Rank": "3"
+        },
+        "Swimming": {
+          "Time": "2:55.22",
+          "Points": "60",
+          "Rank": "2"
+        },
+        "Laser Run": {
+          "Handicap": "8:12",
+          "Start": "1:30",
+          "End": "13:52",
+          "Time": "12:22.00",
+          "Points": "218",
+          "Rank": "2"
+        },
+        "Overall": {
+          "Points": "488",
+          "Rank": "2"
+        }
+      }
+    },
+    {
+      "source": "hipenta",
+      "source_url": "https://www.hipenta.com/live/events/f14078fe-cd99-4f90-b2c2-994adeb4293e/categories/b2e43a82-0ae8-446c-a926-2f67312d4235/result",
+      "event_name": "2025 Canadian National Championships",
+      "category": "U15 Girls",
+      "location": "",
+      "event_datetime_text": "Jul 25, 2025 10:00 PM",
+      "overall_points": 878,
+      "overall_rank": 2,
+      "disciplines": {
+        "Obstacle": {
+          "Time": "1:02.09",
+          "Points": "259",
+          "Rank": "2"
+        },
+        "Fencing": {
+          "V/D": "5/19",
+          "Ladder Victories": "0",
+          "Points": "166",
+          "Rank": "2"
+        },
+        "Swimming": {
+          "Time": "2:10.9",
+          "Points": "149",
+          "Rank": "2"
+        },
+        "Laser Run": {
+          "Handicap": "2:15",
+          "Start": "1:30",
+          "End": "12:26.43",
+          "Time": "10:56.43",
+          "Points": "304",
+          "Rank": "2"
+        },
+        "Overall": {
+          "Points": "878",
+          "Rank": "2"
+        }
+      }
+    }
+  ],
+  "pentathlonscore_events": [
+    {
+      "source": "pentathlonscore",
+      "source_url": "https://pentathlonscore.com/",
+      "competition": "2026 Charlotte March Invitational",
+      "location": "Charlotte, NC",
+      "start_date": "2026-03-21",
+      "end_date": "2026-03-21",
+      "status": "finished",
+      "division": "U15 Women",
+      "age_group": "U15",
+      "gender": "F",
+      "noc": "USA",
+      "entry_rank": 1,
+      "total_points": 838,
+      "handicap_seconds": 0,
+      "tie_break_order": null,
+      "disciplines": {
+        "Fencing": {
+          "raw": "12v 14d",
+          "points": 208
+        },
+        "Swimming": {
+          "raw": "1:48.91",
+          "points": 55
+        },
+        "Obstacle": {
+          "raw": "1:26.22",
+          "points": 186
+        },
+        "Laser Run": {
+          "raw": "9:31",
+          "points": 389
+        }
+      }
+    },
+    {
+      "source": "pentathlonscore",
+      "source_url": "https://pentathlonscore.com/",
+      "competition": "2025 US Nationals",
+      "location": "Charlotte, NC",
+      "start_date": "2025-12-13",
+      "end_date": "2025-12-14",
+      "status": "finished",
+      "division": "U15 Women",
+      "age_group": "U15",
+      "gender": "F",
+      "noc": "USA",
+      "entry_rank": 2,
+      "total_points": 1108,
+      "handicap_seconds": 246,
+      "tie_break_order": null,
+      "disciplines": {
+        "Fencing": {
+          "raw": "13v 11d",
+          "points": 222
+        },
+        "Swimming": {
+          "raw": "2:10.61",
+          "points": 148
+        },
+        "Obstacle": {
+          "raw": "27.21",
+          "points": 363
+        },
+        "Laser Run": {
+          "raw": "9:45",
+          "points": 375
+        }
+      }
+    }
+  ]
+}

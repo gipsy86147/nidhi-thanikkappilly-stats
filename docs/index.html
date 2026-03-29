@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nidhi Thanikkappilly Stats</title>
+    <meta
+      name="description"
+      content="Scraped stats for Nidhi Thanikkappilly from HiPenta and PentathlonScore."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f6ef;
+        --ink: #1c1e17;
+        --card: #fffdf7;
+        --accent: #d95733;
+        --accent-soft: #f3c4a6;
+        --muted: #6a6f5e;
+        --line: #d5d2c7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        background:
+          radial-gradient(circle at 0% 0%, #fff5df 0, transparent 45%),
+          radial-gradient(circle at 100% 40%, #ffe7dd 0, transparent 42%),
+          var(--bg);
+        color: var(--ink);
+      }
+
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 26px 16px 42px;
+      }
+
+      .hero {
+        border: 1px solid var(--line);
+        background: linear-gradient(165deg, #fff3df 0%, #fffef7 60%, #f6f4eb 100%);
+        border-radius: 24px;
+        padding: 26px;
+        box-shadow: 0 8px 28px rgba(33, 24, 7, 0.08);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", serif;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.05;
+      }
+
+      h2 {
+        font-size: clamp(1.45rem, 3.5vw, 2rem);
+        margin-bottom: 14px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .subhead {
+        margin-top: 10px;
+        color: var(--muted);
+      }
+
+      .tag {
+        display: inline-block;
+        margin-top: 14px;
+        border: 1px solid #e9b89c;
+        background: #fff5ee;
+        color: #8f3218;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.84rem;
+      }
+
+      .summary-grid {
+        margin-top: 18px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .summary-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+        background: var(--card);
+      }
+
+      .summary-label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--muted);
+      }
+
+      .summary-value {
+        margin-top: 4px;
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+
+      .section {
+        margin-top: 26px;
+      }
+
+      .event-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .event-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        padding: 14px;
+      }
+
+      .event-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .event-name {
+        font-size: 1.12rem;
+        font-weight: 700;
+      }
+
+      .event-meta {
+        color: var(--muted);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
+
+      .event-pill {
+        align-self: flex-start;
+        border: 1px solid #f0b99f;
+        background: #fff3eb;
+        color: #9f3d1f;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 5px 10px;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+
+      th,
+      td {
+        text-align: left;
+        border-bottom: 1px solid #e4e1d8;
+        padding: 8px 6px;
+        vertical-align: top;
+      }
+
+      th {
+        font-size: 0.77rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      a {
+        color: #ba3f17;
+      }
+
+      .footnote {
+        margin-top: 26px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 20px;
+        }
+
+        .event-card {
+          padding: 12px;
+        }
+
+        table {
+          font-size: 0.84rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <h1 id="athlete-name">Nidhi Thanikkappilly Stats</h1>
+        <p class="subhead">
+          This page aggregates scraped performance results from HiPenta event pages and
+          PentathlonScore competition feeds.
+        </p>
+        <p class="tag" id="generated-at">Generated: loading...</p>
+
+        <div class="summary-grid" id="summary-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>HiPenta Event Results</h2>
+        <div id="hipenta-grid" class="event-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>PentathlonScore Results</h2>
+        <div id="pentathlonscore-grid" class="event-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>Source Links</h2>
+        <div id="sources"></div>
+      </section>
+
+      <p class="footnote">
+        Data shown is scraped from public pages/APIs and can change as source sites update.
+      </p>
+    </main>
+
+    <script>
+      const esc = (value) =>
+        String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+
+      const toDisciplineRows = (disciplines = {}) =>
+        Object.entries(disciplines)
+          .map(([name, values]) => {
+            const rows = Object.entries(values || {})
+              .filter(([, v]) => v !== "" && v !== null && v !== undefined)
+              .map(([k, v]) => `${esc(k)}: ${esc(v)}`)
+              .join("<br />");
+            return `<tr><td>${esc(name)}</td><td>${rows || "-"}</td></tr>`;
+          })
+          .join("");
+
+      async function load() {
+        const response = await fetch("./data/nidhi_stats.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+
+        const payload = await response.json();
+
+        document.getElementById("athlete-name").textContent = `${
+          payload.athlete.display_name
+        } Stats`;
+
+        const generated = new Date(payload.generated_at_utc);
+        document.getElementById("generated-at").textContent = `Generated: ${generated.toLocaleString()}`;
+
+        const summaryItems = [
+          ["HiPenta Events", payload.summary.hipenta_event_count],
+          ["PentathlonScore Events", payload.summary.pentathlonscore_event_count],
+          ["Best Points", payload.summary.best_points],
+          ["Latest Event Date", payload.summary.latest_event_date || "-"],
+        ];
+
+        document.getElementById("summary-grid").innerHTML = summaryItems
+          .map(
+            ([label, value]) =>
+              `<div class="summary-card"><div class="summary-label">${esc(
+                label
+              )}</div><div class="summary-value">${esc(value)}</div></div>`
+          )
+          .join("");
+
+        document.getElementById("hipenta-grid").innerHTML = payload.hipenta_events
+          .map(
+            (event) => `
+              <article class="event-card">
+                <div class="event-top">
+                  <div>
+                    <div class="event-name">${esc(event.event_name)}</div>
+                    <div class="event-meta">${esc(event.category)} | ${esc(event.location || "Unknown location")}</div>
+                    <div class="event-meta">${esc(event.event_datetime_text)}</div>
+                  </div>
+                  <div class="event-pill">Overall ${esc(event.overall_points)} pts (Rank ${esc(
+                    event.overall_rank
+                  )})</div>
+                </div>
+                <table>
+                  <thead>
+                    <tr><th>Discipline</th><th>Stats</th></tr>
+                  </thead>
+                  <tbody>
+                    ${toDisciplineRows(event.disciplines)}
+                  </tbody>
+                </table>
+                <div class="event-meta">Source: <a href="${esc(event.source_url)}">${esc(
+                  event.source_url
+                )}</a></div>
+              </article>
+            `
+          )
+          .join("");
+
+        document.getElementById("pentathlonscore-grid").innerHTML = payload.pentathlonscore_events
+          .map(
+            (event) => `
+              <article class="event-card">
+                <div class="event-top">
+                  <div>
+                    <div class="event-name">${esc(event.competition)}</div>
+                    <div class="event-meta">${esc(event.division)} | ${esc(event.location || "Unknown location")}</div>
+                    <div class="event-meta">${esc(event.start_date)} to ${esc(event.end_date)} | ${esc(
+                      event.status
+                    )}</div>
+                  </div>
+                  <div class="event-pill">${esc(event.total_points)} pts (Rank ${esc(event.entry_rank)})</div>
+                </div>
+                <table>
+                  <thead>
+                    <tr><th>Discipline</th><th>Raw</th><th>Points</th></tr>
+                  </thead>
+                  <tbody>
+                    ${Object.entries(event.disciplines)
+                      .map(
+                        ([name, values]) =>
+                          `<tr><td>${esc(name)}</td><td>${esc(values?.raw ?? "-")}</td><td>${esc(
+                            values?.points ?? "-"
+                          )}</td></tr>`
+                      )
+                      .join("")}
+                  </tbody>
+                </table>
+                <div class="event-meta">NOC: ${esc(event.noc)} | Handicap (sec): ${esc(
+                  event.handicap_seconds
+                )}</div>
+              </article>
+            `
+          )
+          .join("");
+
+        const sourceLinks = [
+          ...payload.sources.hipenta_urls,
+          payload.sources.pentathlonscore_url,
+        ];
+
+        document.getElementById("sources").innerHTML = sourceLinks
+          .map((link) => `<div><a href="${esc(link)}">${esc(link)}</a></div>`)
+          .join("");
+      }
+
+      load().catch((error) => {
+        console.error(error);
+        document.getElementById("summary-grid").innerHTML =
+          '<div class="summary-card">Failed to load stats JSON.</div>';
+      });
+    </script>
+  </body>
+</html>
