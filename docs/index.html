@@ -126,11 +126,49 @@
         gap: 14px;
       }
 
+      .records-tools {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .print-btn {
+        border: 1px solid #d48f73;
+        background: #fff2eb;
+        color: #8f3218;
+        border-radius: 999px;
+        padding: 7px 13px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .print-btn:hover {
+        background: #ffe8dc;
+      }
+
       .event-card {
         border: 1px solid var(--line);
         border-radius: 16px;
         background: var(--card);
         padding: 14px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--card);
+      }
+
+      .compact {
+        margin-top: 0;
+        font-size: 0.84rem;
+      }
+
+      .compact th,
+      .compact td {
+        padding: 7px 6px;
       }
 
       .event-top {
@@ -207,11 +245,49 @@
           font-size: 0.84rem;
         }
       }
+
+      @media print {
+        @page {
+          margin: 10mm;
+        }
+
+        body {
+          background: #fff;
+        }
+
+        .no-print {
+          display: none !important;
+        }
+
+        .print-section {
+          margin-top: 0 !important;
+        }
+
+        .table-wrap {
+          overflow: visible;
+          border: 0;
+        }
+
+        .compact {
+          font-size: 10px;
+        }
+
+        .compact th,
+        .compact td {
+          border: 1px solid #ccc;
+          padding: 4px;
+        }
+
+        a {
+          color: #000;
+          text-decoration: none;
+        }
+      }
     </style>
   </head>
   <body>
     <main class="container">
-      <section class="hero">
+      <section class="hero no-print">
         <h1 id="athlete-name">Nidhi Thanikkappilly Stats</h1>
         <p class="subhead">
           This page aggregates scraped performance results from HiPenta event pages and
@@ -222,22 +298,50 @@
         <div class="summary-grid" id="summary-grid"></div>
       </section>
 
-      <section class="section">
+      <section class="section print-section">
+        <h2>All Tournament Records (Printable)</h2>
+        <div class="records-tools no-print">
+          <button id="print-table-btn" class="print-btn" type="button">Print Table</button>
+        </div>
+        <div class="table-wrap">
+          <table class="compact">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Tournament</th>
+                <th>Date</th>
+                <th>Division</th>
+                <th>Location</th>
+                <th>Overall Pts</th>
+                <th>Rank</th>
+                <th>Obstacle</th>
+                <th>Fencing</th>
+                <th>Swimming</th>
+                <th>Laser Run</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody id="all-records-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section no-print">
         <h2>HiPenta Event Results</h2>
         <div id="hipenta-grid" class="event-grid"></div>
       </section>
 
-      <section class="section">
+      <section class="section no-print">
         <h2>PentathlonScore Results</h2>
         <div id="pentathlonscore-grid" class="event-grid"></div>
       </section>
 
-      <section class="section">
+      <section class="section no-print">
         <h2>Source Links</h2>
         <div id="sources"></div>
       </section>
 
-      <p class="footnote">
+      <p class="footnote no-print">
         Data shown is scraped from public pages/APIs and can change as source sites update.
       </p>
     </main>
@@ -261,6 +365,29 @@
             return `<tr><td>${esc(name)}</td><td>${rows || "-"}</td></tr>`;
           })
           .join("");
+
+      const summarizeHipentaDiscipline = (values = {}) => {
+        const time = values.Time ? `T ${values.Time}` : "";
+        const points = values.Points ? `P ${values.Points}` : "";
+        const vd = values["V/D"] ? `V/D ${values["V/D"]}` : "";
+        const pieces = [time, vd, points].filter(Boolean);
+        return pieces.length ? pieces.join(" | ") : "-";
+      };
+
+      const summarizePentathlonDiscipline = (values = {}) => {
+        const raw = values.raw ?? "";
+        const points = values.points ?? "";
+        if (raw === "" && points === "") return "-";
+        if (raw === "") return `P ${points}`;
+        if (points === "") return String(raw);
+        return `${raw} | P ${points}`;
+      };
+
+      const toSortDateValue = (record) => {
+        const parsed = new Date(record.sortDate);
+        if (!Number.isNaN(parsed.getTime())) return parsed.getTime();
+        return 0;
+      };
 
       async function load() {
         const response = await fetch("./data/nidhi_stats.json", { cache: "no-store" });
@@ -290,6 +417,72 @@
               `<div class="summary-card"><div class="summary-label">${esc(
                 label
               )}</div><div class="summary-value">${esc(value)}</div></div>`
+          )
+          .join("");
+
+        const hipentaRecords = payload.hipenta_events.map((event) => ({
+          source: "HiPenta",
+          tournament: event.event_name,
+          dateLabel: event.event_datetime_text || "-",
+          sortDate: event.event_datetime_text || "",
+          division: event.category || "-",
+          location: event.location || "-",
+          points: event.overall_points ?? "-",
+          rank: event.overall_rank ?? "-",
+          obstacle: summarizeHipentaDiscipline(event.disciplines?.Obstacle || {}),
+          fencing: summarizeHipentaDiscipline(event.disciplines?.Fencing || {}),
+          swimming: summarizeHipentaDiscipline(event.disciplines?.Swimming || {}),
+          laser: summarizeHipentaDiscipline(event.disciplines?.["Laser Run"] || {}),
+          link: event.source_url || "",
+        }));
+
+        const pentathlonscoreRecords = payload.pentathlonscore_events.map((event) => {
+          const dateLabel =
+            event.start_date && event.end_date
+              ? event.start_date === event.end_date
+                ? event.start_date
+                : `${event.start_date} to ${event.end_date}`
+              : event.start_date || event.end_date || "-";
+
+          return {
+            source: "PentathlonScore",
+            tournament: event.competition,
+            dateLabel,
+            sortDate: event.start_date || "",
+            division: event.division || "-",
+            location: event.location || "-",
+            points: event.total_points ?? "-",
+            rank: event.entry_rank ?? "-",
+            obstacle: summarizePentathlonDiscipline(event.disciplines?.Obstacle || {}),
+            fencing: summarizePentathlonDiscipline(event.disciplines?.Fencing || {}),
+            swimming: summarizePentathlonDiscipline(event.disciplines?.Swimming || {}),
+            laser: summarizePentathlonDiscipline(event.disciplines?.["Laser Run"] || {}),
+            link: event.source_url || payload.sources.pentathlonscore_url || "",
+          };
+        });
+
+        const allRecords = [...hipentaRecords, ...pentathlonscoreRecords].sort(
+          (a, b) => toSortDateValue(b) - toSortDateValue(a)
+        );
+
+        document.getElementById("all-records-body").innerHTML = allRecords
+          .map(
+            (record) => `
+              <tr>
+                <td>${esc(record.source)}</td>
+                <td>${esc(record.tournament)}</td>
+                <td>${esc(record.dateLabel)}</td>
+                <td>${esc(record.division)}</td>
+                <td>${esc(record.location)}</td>
+                <td>${esc(record.points)}</td>
+                <td>${esc(record.rank)}</td>
+                <td>${esc(record.obstacle)}</td>
+                <td>${esc(record.fencing)}</td>
+                <td>${esc(record.swimming)}</td>
+                <td>${esc(record.laser)}</td>
+                <td><a href="${esc(record.link)}">View</a></td>
+              </tr>
+            `
           )
           .join("");
 
@@ -368,6 +561,10 @@
         document.getElementById("sources").innerHTML = sourceLinks
           .map((link) => `<div><a href="${esc(link)}">${esc(link)}</a></div>`)
           .join("");
+
+        document.getElementById("print-table-btn").addEventListener("click", () => {
+          window.print();
+        });
       }
 
       load().catch((error) => {
