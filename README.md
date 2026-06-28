@@ -1,10 +1,18 @@
 # Nidhi Thanikkappilly Stats (GitHub Pages)
 
+[![Update Nidhi pentathlon stats](https://github.com/gipsy86147/nidhi-thanikkappilly-stats/actions/workflows/update-nidhi-stats.yml/badge.svg)](https://github.com/gipsy86147/nidhi-thanikkappilly-stats/actions/workflows/update-nidhi-stats.yml)
+
 This repo scrapes and publishes Nidhi Thanikkappilly competition stats from:
 
 - https://www.hipenta.com/live/events/46b72a21-cef6-4404-a527-6618600bf67f/categories/e6889cfc-828c-4792-82e2-c6fb8980b624/result
 - https://www.hipenta.com/live/events/f14078fe-cd99-4f90-b2c2-994adeb4293e/categories/b2e43a82-0ae8-446c-a926-2f67312d4235/result
 - https://pentathlonscore.com/
+
+## Auto Update
+
+Stats are refreshed by GitHub Actions every day at 11:00 UTC and can also be run manually from the Actions tab.
+
+The site displays the latest generated time from `docs/data/nidhi_stats.json`.
 
 ## Regenerate Data
 
