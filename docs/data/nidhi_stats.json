@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-15T17:36:12.406362+00:00",
+  "generated_at_utc": "2026-11-16T20:50:23.847566+00:00",
   "athlete": {
     "first_name": "Nidhi",
     "last_name": "Thanikkappilly",
@@ -14,9 +14,9 @@
   },
   "summary": {
     "hipenta_event_count": 2,
-    "pentathlonscore_event_count": 3,
+    "pentathlonscore_event_count": 4,
     "best_points": 1108,
-    "latest_event_date": "2026-06-27"
+    "latest_event_date": "2026-11-21"
   },
   "hipenta_events": [
     {
@@ -105,11 +105,34 @@
     {
       "source": "pentathlonscore",
       "source_url": "https://pentathlonscore.com/",
+      "competition": "2027 International Ranking Competition Qualifier #1",
+      "location": "Charlotte, NC",
+      "start_date": "2026-11-21",
+      "end_date": "2026-11-21",
+      "status": "live",
+      "division": "Senior Women",
+      "age_group": "Senior",
+      "gender": "F",
+      "noc": "USA",
+      "entry_rank": 1,
+      "total_points": 0,
+      "handicap_seconds": null,
+      "tie_break_order": null,
+      "disciplines": {
+        "Fencing": {},
+        "Swimming": {},
+        "Obstacle": {},
+        "Laser Run": {}
+      }
+    },
+    {
+      "source": "pentathlonscore",
+      "source_url": "https://pentathlonscore.com/",
       "competition": "2026 US National Championships",
       "location": "Charlotte, NC",
       "start_date": "2026-06-27",
       "end_date": "2026-06-27",
-      "status": "live",
+      "status": "finished",
       "division": "U15 Women",
       "age_group": "U15",
       "gender": "F",
