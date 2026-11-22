@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-21T17:53:56.196188+00:00",
+  "generated_at_utc": "2026-11-22T18:18:33.544990+00:00",
   "athlete": {
     "first_name": "Nidhi",
     "last_name": "Thanikkappilly",
@@ -114,9 +114,9 @@
       "age_group": "Senior",
       "gender": "F",
       "noc": "USA",
-      "entry_rank": 16,
-      "total_points": 278,
-      "handicap_seconds": 282,
+      "entry_rank": 17,
+      "total_points": 459,
+      "handicap_seconds": 988,
       "tie_break_order": null,
       "disciplines": {
         "Fencing": {
@@ -127,8 +127,14 @@
           "raw": "1:43.45",
           "points": 82
         },
-        "Obstacle": {},
-        "Laser Run": {}
+        "Obstacle": {
+          "raw": "EL",
+          "points": 0
+        },
+        "Laser Run": {
+          "raw": "18:39",
+          "points": 181
+        }
       }
     },
     {
